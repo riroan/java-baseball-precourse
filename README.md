@@ -7,7 +7,7 @@
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
 
 ## 기능 목록
-- [ ] 숫자야구 게임 유저 인터페이스
+- [X] 숫자야구 게임 유저 인터페이스
 - [ ] 난수 생성 기능
 - [ ] 사용자의 입력을 받고 strike, ball, nothing을 판단하는 기능
 - [ ] 사용자 입력 유효성 검사
