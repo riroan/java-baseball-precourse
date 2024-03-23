@@ -1,5 +1,7 @@
 public class BaseballGame {
     private final int LENGTH = 3;
+    private final int MIN_VALUE = 1;
+    private final int MAX_VALUE = 9;
     private final NumberGenerator numberGenerator;
     private final BaseballView baseballView;
     private boolean isTerminated;
@@ -41,7 +43,7 @@ public class BaseballGame {
     }
 
     void initialize() {
-        answerNumbers = numberGenerator.generate(LENGTH);
+        answerNumbers = numberGenerator.generateNumbers(LENGTH, MIN_VALUE, MAX_VALUE);
     }
 
     boolean checkGameEnd(int strike) {
