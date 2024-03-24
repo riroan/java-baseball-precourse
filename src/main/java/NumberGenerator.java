@@ -1,4 +1,6 @@
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class NumberGenerator {
     private final Random random;
@@ -15,8 +17,15 @@ public class NumberGenerator {
     // [lo, hi] 범위의 난수 length개 생성
     public int[] generateNumbers(int length, int lo, int hi) {
         int[] result = new int[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = generateOneNumber(lo, hi);
+        Set<Integer> existNumberSet = new HashSet<>();
+        int ix = 0;
+        while (ix < length) {
+            int number = generateOneNumber(lo, hi);
+            if (!existNumberSet.contains(number)) {
+                result[ix] = number;
+                existNumberSet.add(number);
+                ix++;
+            }
         }
         return result;
     }
