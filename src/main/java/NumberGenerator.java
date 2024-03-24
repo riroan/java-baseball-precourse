@@ -7,11 +7,12 @@ public class NumberGenerator {
         this.random = new Random();
     }
 
+    // [lo, hi] 범위의 난수 하나 생성
     public int generateOneNumber(int lo, int hi) {
-        // [lo, hi] 범위의 정수 하나 생성
-        return random.nextInt() % (hi - lo + 1) + lo;
+        return random.nextInt(hi - lo + 1) + lo;
     }
 
+    // [lo, hi] 범위의 난수 length개 생성
     public int[] generateNumbers(int length, int lo, int hi) {
         int[] result = new int[length];
         for (int i = 0; i < length; i++) {

@@ -24,11 +24,10 @@ public class BaseballGame {
             }
             int[] userNumbers = baseballView.refineUserNumber(userNumber);
 
-            int strike = calculateStrike(userNumbers);
-            int ball = calculateBall(userNumbers);
-            baseballView.printResult(strike, ball);
+            BaseballScore score = BaseballScore.calculateScore(userNumbers, answerNumbers);
+            baseballView.printResult(score);
 
-            if (checkGameEnd(strike)) {
+            if (checkGameEnd(score)) {
                 handleGameEnd();
             }
         }
@@ -46,19 +45,7 @@ public class BaseballGame {
         answerNumbers = numberGenerator.generateNumbers(LENGTH, MIN_VALUE, MAX_VALUE);
     }
 
-    boolean checkGameEnd(int strike) {
-        return strike == LENGTH;
-    }
-
-
-    int calculateStrike(int[] userNumbers) {
-        if (userNumbers[0] == 0) {
-            return 3;
-        }
-        return 0;
-    }
-
-    int calculateBall(int[] userNumbers) {
-        return 0;
+    boolean checkGameEnd(BaseballScore score) {
+        return score.getStrikeCount() == LENGTH;
     }
 }

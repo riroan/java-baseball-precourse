@@ -1,10 +1,11 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BaseballView {
     private final Scanner scanner;
     private final String inputMessage = "숫자를 입력해주세요: ";
     private final String errorMessage = "[ERROR] 잘못된 값을 입력하셨습니다.";
-    private final String resultMessage = "%d strikes, %d balls\n";
     private final String winMessage = "%d개의 숫자를 모두 맞히셨습니다! 게임 끝\n";
     private final String continueMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
 
@@ -32,15 +33,28 @@ public class BaseballView {
         return userNumbers;
     }
 
-    void printResult(int strike, int ball) {
-        System.out.printf(resultMessage, strike, ball);
+    void printResult(BaseballScore score) {
+        List<String> arr = new ArrayList<>();
+        int strikeCount = score.getStrikeCount();
+        int ballCount = score.getBallCount();
+        if (strikeCount > 0) {
+            arr.add(strikeCount + "스트라이크");
+        }
+        if (ballCount > 0) {
+            arr.add(ballCount + "볼");
+        }
+        String message = String.join(" ", arr);
+        if (message.isEmpty()) {
+            message = "틀렸습니다.";
+        }
+        System.out.println(message);
     }
 
     void printError() {
         System.out.println(errorMessage);
     }
 
-    void printWinMessage(int number){
+    void printWinMessage(int number) {
         System.out.printf(winMessage, number);
     }
 
