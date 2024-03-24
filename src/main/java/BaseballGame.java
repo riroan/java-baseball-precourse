@@ -33,7 +33,7 @@ public class BaseballGame {
         }
     }
 
-    void handleGameEnd() {
+    private void handleGameEnd() {
         baseballView.printWinMessage(LENGTH);
         isTerminated = baseballView.askGameEnd();
         if (!isTerminated) {
@@ -41,11 +41,11 @@ public class BaseballGame {
         }
     }
 
-    void initialize() {
+    private void initialize() {
         answerNumbers = numberGenerator.generateNumbers(LENGTH, MIN_VALUE, MAX_VALUE);
     }
 
-    boolean checkGameEnd(BaseballScore score) {
+    private boolean checkGameEnd(BaseballScore score) {
         return score.getStrikeCount() == LENGTH;
     }
 }
