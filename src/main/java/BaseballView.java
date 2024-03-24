@@ -4,24 +4,28 @@ import java.util.Scanner;
 
 public class BaseballView {
     private final Scanner scanner;
-    private final String inputMessage = "숫자를 입력해주세요: ";
-    private final String errorMessage = "[ERROR] 잘못된 값을 입력하셨습니다.";
-    private final String winMessage = "%d개의 숫자를 모두 맞히셨습니다! 게임 끝\n";
-    private final String continueMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
+    private final String INPUT_MESSAGE = "숫자를 입력해주세요: ";
+    private final String ERROR_MESSAGE = "[ERROR] 잘못된 값을 입력하셨습니다.";
+    private final String WIN_MESSAGE = "%d개의 숫자를 모두 맞히셨습니다! 게임 끝\n";
+    private final String CONTINUE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
+
+    private final String END_STRING = "2";
 
     BaseballView() {
         scanner = new Scanner(System.in);
     }
 
     String inputUserNumber() {
-        System.out.print(inputMessage);
+        System.out.print(INPUT_MESSAGE);
         String userNumber = scanner.nextLine();
 
         return userNumber;
     }
 
-    boolean validateUserNumber(String userNumber, int length) {
-        return true;
+    // [lo, hi] 범위의 정수가 length개 있는지 판별
+    boolean validateUserNumber(String userNumber, int length, int lo, int hi) {
+        String pattern = String.format("^[%d-%d]{%d}$", lo, hi, length);
+        return userNumber.matches(pattern);
     }
 
     int[] refineUserNumber(String userNumber) {
@@ -45,27 +49,35 @@ public class BaseballView {
         }
         String message = String.join(" ", arr);
         if (message.isEmpty()) {
-            message = "틀렸습니다.";
+            message = "틀렸습니다";
         }
         System.out.println(message);
     }
 
     void printError() {
-        System.out.println(errorMessage);
+        System.out.println(ERROR_MESSAGE);
     }
 
-    void printWinMessage(int number) {
-        System.out.printf(winMessage, number);
+    void printWinMessage(int length) {
+        System.out.printf(WIN_MESSAGE, length);
     }
 
     boolean askGameEnd() {
-        System.out.println(continueMessage);
-        String gameEnd = scanner.nextLine();
+        String gameEnd;
+        while (true) {
+            System.out.println(CONTINUE_MESSAGE);
+            gameEnd = scanner.nextLine();
+            if(validateGameEnd(gameEnd)){
+                break;
+            }
+            System.out.println(ERROR_MESSAGE);
+        }
 
-        return true;
+        return gameEnd.equals(END_STRING);
     }
 
     boolean validateGameEnd(String gameEnd) {
-        return true;
+        String pattern = "[1-2]";
+        return gameEnd.matches(pattern);
     }
 }

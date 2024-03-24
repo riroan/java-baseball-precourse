@@ -18,7 +18,7 @@ public class BaseballGame {
         initialize();
         while (!isTerminated) {
             String userNumber = baseballView.inputUserNumber();
-            if (!baseballView.validateUserNumber(userNumber, LENGTH)) {
+            if (!baseballView.validateUserNumber(userNumber, LENGTH, MIN_VALUE, MAX_VALUE)) {
                 baseballView.printError();
                 continue;
             }
