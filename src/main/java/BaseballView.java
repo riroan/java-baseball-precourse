@@ -39,17 +39,17 @@ public class BaseballView {
     }
 
     void printResult(BaseballScore score) {
-        List<String> arr = new ArrayList<>();
+        List<String> messageList = new ArrayList<>();
         int strikeCount = score.getStrikeCount();
         int ballCount = score.getBallCount();
-        if (strikeCount > 0) {
-            arr.add(strikeCount + "스트라이크");
+        if (score.hasStrike()) {
+            messageList.add(strikeCount + "스트라이크");
         }
-        if (ballCount > 0) {
-            arr.add(ballCount + "볼");
+        if (score.hasBall()) {
+            messageList.add(ballCount + "볼");
         }
-        String message = String.join(" ", arr);
-        if (message.isEmpty()) {
+        String message = String.join(" ", messageList);
+        if (score.isNothing()) {
             message = "낫싱";
         }
         System.out.println(message);

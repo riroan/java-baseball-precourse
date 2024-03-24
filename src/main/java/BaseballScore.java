@@ -48,4 +48,19 @@ public class BaseballScore {
         return ballCount;
     }
 
+    public boolean isOut(int length) {
+        return strikeCount == length;
+    }
+
+    public boolean hasStrike() {
+        return strikeCount > 0;
+    }
+
+    public boolean hasBall() {
+        return ballCount > 0;
+    }
+
+    public boolean isNothing() {
+        return !(hasBall() || hasStrike());
+    }
 }

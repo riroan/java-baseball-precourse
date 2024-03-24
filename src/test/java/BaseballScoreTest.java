@@ -22,8 +22,8 @@ public class BaseballScoreTest {
         int[] userNumbers = {1, 2, 3};
         BaseballScore score = BaseballScore.calculateScore(userNumbers, answerNumbers);
         
-        assertThat(score.getStrikeCount() == 3);
-        assertThat(score.getBallCount() == 0);
+        assertThat(score.getStrikeCount()).isEqualTo(3);
+        assertThat(score.getBallCount()).isEqualTo(0);
     }
 
     @Test
@@ -32,8 +32,8 @@ public class BaseballScoreTest {
         int[] userNumbers = {3, 1, 2};
         BaseballScore score = BaseballScore.calculateScore(userNumbers, answerNumbers);
 
-        assertThat(score.getStrikeCount() == 0);
-        assertThat(score.getBallCount() == 3);
+        assertThat(score.getStrikeCount()).isEqualTo(0);
+        assertThat(score.getBallCount()).isEqualTo(3);
     }
 
     @Test
@@ -42,8 +42,8 @@ public class BaseballScoreTest {
         int[] userNumbers = {7, 8, 9};
         BaseballScore score = BaseballScore.calculateScore(userNumbers, answerNumbers);
 
-        assertThat(score.getStrikeCount() == 0);
-        assertThat(score.getBallCount() == 0);
+        assertThat(score.getStrikeCount()).isEqualTo(0);
+        assertThat(score.getBallCount()).isEqualTo(0);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class BaseballScoreTest {
         int[] userNumbers = {3, 2, 1};
         BaseballScore score = BaseballScore.calculateScore(userNumbers, answerNumbers);
 
-        assertThat(score.getStrikeCount() == 1);
-        assertThat(score.getBallCount() == 2);
+        assertThat(score.getStrikeCount()).isEqualTo(1);
+        assertThat(score.getBallCount()).isEqualTo(2);
     }
 }

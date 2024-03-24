@@ -42,7 +42,7 @@ public class BaseballGame {
     }
 
     private void initialize() {
-        answerNumbers = numberGenerator.generateNumbers(LENGTH, MIN_VALUE, MAX_VALUE);
+        answerNumbers = numberGenerator.generateNumbersBetween(LENGTH, MIN_VALUE, MAX_VALUE);
     }
 
     private boolean checkGameEnd(BaseballScore score) {

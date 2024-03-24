@@ -16,7 +16,7 @@ public class NumberGeneratorTest {
     @Test
     @DisplayName("중복되지 않는지 확인")
     void generateMultipleNumberDistinct() {
-        int[] numbers = numberGenerator.generateNumbers(LENGTH, LO, HI);
+        int[] numbers = numberGenerator.generateNumbersBetween(LENGTH, LO, HI);
 
         assertThat(numbers.length == LENGTH);
         Set<Integer> numberSet = new HashSet<>();

@@ -9,18 +9,17 @@ public class NumberGenerator {
         this.random = new Random();
     }
 
-    // [lo, hi] 범위의 난수 하나 생성
-    private int generateOneNumber(int lo, int hi) {
-        return random.nextInt(hi - lo + 1) + lo;
+    private int generateOneNumberBetween(int startInclusive, int endInclusive) {
+        return random.nextInt(endInclusive - startInclusive + 1) + startInclusive;
     }
 
     // [lo, hi] 범위의 난수 length개 생성
-    public int[] generateNumbers(int length, int lo, int hi) {
+    public int[] generateNumbersBetween(int length, int startInclusive, int endInclusive) {
         int[] result = new int[length];
         Set<Integer> existNumberSet = new HashSet<>();
         int ix = 0;
         while (ix < length) {
-            int number = generateOneNumber(lo, hi);
+            int number = generateOneNumberBetween(startInclusive, endInclusive);
             if (!existNumberSet.contains(number)) {
                 result[ix] = number;
                 existNumberSet.add(number);
