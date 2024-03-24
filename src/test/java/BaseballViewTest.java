@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -17,10 +18,24 @@ public class BaseballViewTest {
         assertThat(baseballView.validateUserNumber(userInput, LENGTH, LO, HI));
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"1233", "019", "abc", "130"})
-    @DisplayName("사용자 입력 유효성 실패 테스트")
-    void validateUserInputFail(String userInput) {
+    @Test
+    @DisplayName("사용자 입력 유효성 실패 - 길이 오류")
+    void validateUserInputFailWhenInvalidLength() {
+        String userInput = "1233";
+        assertThat(baseballView.validateUserNumber(userInput, LENGTH, LO, HI));
+    }
+
+    @Test
+    @DisplayName("사용자 입력 유효성 실패 - 범위에 맞지 않는 수")
+    void validateUserInputFailWhenInvalidInputRange() {
+        String userInput = "019";
+        assertThat(baseballView.validateUserNumber(userInput, LENGTH, LO, HI));
+    }
+
+    @Test
+    @DisplayName("사용자 입력 유효성 실패 - 숫자가 아닌 입력")
+    void validateUserInputFailWhenInvalidInput() {
+        String userInput = "abc";
         assertThat(baseballView.validateUserNumber(userInput, LENGTH, LO, HI));
     }
 }

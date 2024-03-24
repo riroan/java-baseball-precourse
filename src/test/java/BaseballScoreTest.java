@@ -17,8 +17,8 @@ public class BaseballScoreTest {
     }
 
     @Test
-    @DisplayName("점수 계산 1")
-    void calculateScoreCase1() {
+    @DisplayName("스트라이크 3 점수계산")
+    void calculateScoreCaseReturn3Strikes() {
         int[] userNumbers = {1, 2, 3};
         BaseballScore score = BaseballScore.calculateScore(userNumbers, answerNumbers);
         
@@ -27,8 +27,8 @@ public class BaseballScoreTest {
     }
 
     @Test
-    @DisplayName("점수 계산 2")
-    void calculateScoreCase2(){
+    @DisplayName("볼 3 점수계산")
+    void calculateScoreCaseReturn3Balls(){
         int[] userNumbers = {3, 1, 2};
         BaseballScore score = BaseballScore.calculateScore(userNumbers, answerNumbers);
 
@@ -37,8 +37,8 @@ public class BaseballScoreTest {
     }
 
     @Test
-    @DisplayName("점수 계산 3")
-    void calculateScoreCase3(){
+    @DisplayName("낫싱 점수계산")
+    void calculateScoreCaseReturnNothing(){
         int[] userNumbers = {7, 8, 9};
         BaseballScore score = BaseballScore.calculateScore(userNumbers, answerNumbers);
 
@@ -47,8 +47,8 @@ public class BaseballScoreTest {
     }
 
     @Test
-    @DisplayName("점수 계산 4")
-    void calculateScoreCase4(){
+    @DisplayName("스트라이크 1, 볼 2 점수계산")
+    void calculateScoreCaseReturn1Strike2Balls(){
         int[] userNumbers = {3, 2, 1};
         BaseballScore score = BaseballScore.calculateScore(userNumbers, answerNumbers);
 
