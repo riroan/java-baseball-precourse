@@ -49,7 +49,7 @@ public class BaseballView {
         }
         String message = String.join(" ", arr);
         if (message.isEmpty()) {
-            message = "틀렸습니다";
+            message = "낫싱";
         }
         System.out.println(message);
     }
