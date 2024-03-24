@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class BaseballView {
     private final Scanner scanner;
@@ -8,8 +9,8 @@ public class BaseballView {
     private final String ERROR_MESSAGE = "[ERROR] 잘못된 값을 입력하셨습니다.";
     private final String WIN_MESSAGE = "%d개의 숫자를 모두 맞히셨습니다! 게임 끝\n";
     private final String CONTINUE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
-
     private final String END_STRING = "2";
+    private static final Pattern GAME_END_REGEX = Pattern.compile("^[1-2]$");
 
     BaseballView() {
         scanner = new Scanner(System.in);
@@ -81,7 +82,6 @@ public class BaseballView {
     }
 
     boolean validateGameEnd(String gameEnd) {
-        String pattern = "[1-2]";
-        return gameEnd.matches(pattern);
+        return GAME_END_REGEX.matcher(gameEnd).matches();
     }
 }
