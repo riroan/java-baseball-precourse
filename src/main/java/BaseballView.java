@@ -62,15 +62,19 @@ public class BaseballView {
         System.out.printf(WIN_MESSAGE, length);
     }
 
+    void printContinueMessage() {
+        System.out.println(CONTINUE_MESSAGE);
+    }
+
     boolean askGameEnd() {
         String gameEnd;
         while (true) {
-            System.out.println(CONTINUE_MESSAGE);
+            printContinueMessage();
             gameEnd = scanner.nextLine();
             if(validateGameEnd(gameEnd)){
                 break;
             }
-            System.out.println(ERROR_MESSAGE);
+            printError();
         }
 
         return gameEnd.equals(END_STRING);
