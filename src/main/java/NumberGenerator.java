@@ -10,7 +10,7 @@ public class NumberGenerator {
     }
 
     // [lo, hi] 범위의 난수 하나 생성
-    public int generateOneNumber(int lo, int hi) {
+    private int generateOneNumber(int lo, int hi) {
         return random.nextInt(hi - lo + 1) + lo;
     }
 

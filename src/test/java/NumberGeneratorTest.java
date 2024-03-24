@@ -14,15 +14,6 @@ public class NumberGeneratorTest {
     final int HI = 100;
 
     @Test
-    @DisplayName("숫자가 범위 안에 들어오는지 확인")
-    void generateOneNumberOnBound() {
-        for(int epoch = 0; epoch < EPOCH; epoch++) {
-            int number = numberGenerator.generateOneNumber(LO, HI);
-            assertThat(number >= LO && number <= HI);
-        }
-    }
-
-    @Test
     @DisplayName("중복되지 않는지 확인")
     void generateMultipleNumberDistinct() {
         int[] numbers = numberGenerator.generateNumbers(LENGTH, LO, HI);
